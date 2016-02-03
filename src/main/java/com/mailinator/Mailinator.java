@@ -190,11 +190,17 @@ public class Mailinator {
         message.setTo(jsonInboxMsg.get("to").toString());
         message.setId(jsonInboxMsg.get("id").toString());
         message.setSeconds_ago(Long.parseLong(jsonInboxMsg.get("seconds_ago").toString()));
-        message.setTime(Long.parseLong(jsonInboxMsg.get("time").toString()));
+        if(jsonInboxMsg.get("time") != null) {
+          message.setTime(Long.parseLong(jsonInboxMsg.get("time").toString()));
+        }
         message.setSubject(jsonInboxMsg.get("subject").toString());
-        message.setFromfull(jsonInboxMsg.get("fromfull").toString());
+        if(jsonInboxMsg.get("fromfull") != null) {
+          message.setFromfull(jsonInboxMsg.get("fromfull").toString());
+        }
         message.setFrom(jsonInboxMsg.get("from").toString());
-        message.setBeen_read((Boolean) jsonInboxMsg.get("been_read"));
+        if(jsonInboxMsg.get("been_read") != null) {
+          message.setBeen_read((Boolean) jsonInboxMsg.get("been_read"));
+        }
         if(jsonInboxMsg.get("ip") != null) {
           message.setIp(jsonInboxMsg.get("ip").toString());
         }
@@ -246,5 +252,4 @@ public class Mailinator {
 
         return headers;
     }
-
 }
